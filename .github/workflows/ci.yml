@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres13.2
+        image: postgres:13.2
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: zante
@@ -21,23 +21,23 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
   
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
 
-    - name: install dependencies
-      run:
-        python -m pipinstall --upgrade pip
-        pip install -r requirements.txt
+      - name: install dependencies
+        run:
+          python -m pipinstall --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Coverage report
-      run: 
-        pip install coverage
-        coverage run manage.py test --settings=zante.settings.testing
-        coverage report
+      - name: Coverage report
+        run: 
+          pip install coverage
+          coverage run manage.py test --settings=zante.settings.testing
+          coverage report
 
-    - name: Zante Testing
-      run:
-        python manage.py test --settings=zante.settings.testing
+      - name: Zante Testing
+        run:
+          python manage.py test --settings=zante.settings.testing
