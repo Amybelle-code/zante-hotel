@@ -27,16 +27,17 @@ jobs:
     with:
       python-version: 3.9
 
-    name: install dependencies
+    -name: install dependencies
     run:
       python -m pipinstall --upgrade pip
       pip install -r requirements.txt
 
-    name: Coverage report
+    -name: Coverage report
     run: 
       pip install coverage
-      coverage run manage.py test --settings=hms.settings.testing
+      coverage run manage.py test --settings=zante.settings.testing
+      coverage report
 
-    -name:
+    -name: Zante Testing
     run:
-      python manage.py test --settings=hms.settings.testing
+      python manage.py test --settings=zante.settings.testing
