@@ -28,7 +28,7 @@ SECRET_KEY = 'o%(tr4u96!6vob7xgurjxpk38*rul0q&1j_wr+q(gu(kpzvssq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['zante-hotel.herokuapp.com', '127.0.0.1']
 
 
 # Application definition

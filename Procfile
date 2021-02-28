@@ -1,0 +1,1 @@
+web: gunicorn zante.wsgi --log-file -
